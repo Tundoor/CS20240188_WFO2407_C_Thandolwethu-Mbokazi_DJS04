@@ -26,8 +26,9 @@
       rel="stylesheet"
     />
 
-    <script type="module" src="./scripts.js"></script>
+    <script type="module" src="./scripts.js" defer></script>
     <script type="module" src="./data.js"></script>
+    <script type="module" src="./options.js" defer ></script>
   </head>
   <body>
  <!-- images used in file -->
@@ -122,13 +123,15 @@
 
           <label class="overlay__field">
             <div class="overlay__label">Genre</div>
-            <select class="overlay__input overlay__input_select" data-search-genres name="genre"></select>
+            <div id="searchGenre"><dropdown-menu class="overlay__input overlay__input_select" data-search-genres name="genre" ></dropdown-menu id="myGenreDropdown"></div>
+            
           </label>
 
           <label class="overlay__field">
             <div class="overlay__label">Author</div>
-            <select class="overlay__input overlay__input_select" data-search-authors name="author">
-            </select>
+            <div id="searchAuthor"><dropdown-menu class="overlay__input overlay__input_select" data-search-authors name="author" id="myAuthorDropdown">
+            </dropdown-menu></div>
+            
           </label>
         </form>
 
