@@ -14,4 +14,11 @@ Some challenges I face was understanding how to get the component to link to the
 
 To use the component, I've placed it into a function where you can assign the parameters which allows you to get the information you want. 
 
+### Drop down component.
+
+Essentially what its supposed to do is allow a user to select an input and then display that input. 
+
+## My struggles
+
+I struggled alot with figuring out how to make the component work in javascript rather than from the html. Also struggled with understanding how to access items which are in the shadow dom rather than normal dom. I figured out how to fix everything through a lot of trial and error and the help of the internet. For the web component section, I was unable to ovrcome the struggles which I had. 
 
