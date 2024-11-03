@@ -1,4 +1,5 @@
-import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
+import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
+import "./webComps.js";
 
 // Elements from HTML
 const elements = {
@@ -32,23 +33,18 @@ const elements = {
 
 // So that users can see books on the UI
 function renderBookList (author, id, image, title, fragment) {
-    const element = document.createElement('button')
-    element.classList = 'preview'
-    element.setAttribute('data-preview', id)
+    const bookPreviewElement = document.createElement('book-preview');
+    
+    // Set book details using the setter method
+    bookPreviewElement.bookDetails = { image, title, author };
 
-    element.innerHTML = `
-        <img
-            class="preview__image"
-            src="${image}"
-        />
-        
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    ` 
-    fragment.appendChild(element)
+    // Add data attributes
+    bookPreviewElement.setAttribute('data-preview', id);
+
+    // Append to the fragment
+    fragment.appendChild(bookPreviewElement);
 }
+
 
 // Creates options for user to choose from in dropDown
 
