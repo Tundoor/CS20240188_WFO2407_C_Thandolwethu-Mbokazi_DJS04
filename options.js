@@ -3,10 +3,7 @@ class DropdownMenu extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' }); // Create a shadow root
     
-    const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'styles.css';
-      this.shadowRoot.appendChild(link)
+      
 
 
        // Create the select element
@@ -18,7 +15,14 @@ class DropdownMenu extends HTMLElement {
     }
 
     // Method to add options
-    addOption(id, name) {
+    addOptionAuthor(id, name) {
+        const option = document.createElement('option');
+        option.value = id;
+        option.innerText = name;
+        this.selectElement.appendChild(option);
+    }
+
+    addOptionGenre(id, name) {
         const option = document.createElement('option');
         option.value = id;
         option.innerText = name;

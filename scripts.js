@@ -1,5 +1,6 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
 import "./webComps.js";
+import "./options.js";
 
 // Elements from HTML
 const elements = {
@@ -46,15 +47,6 @@ function renderBookList (author, id, image, title, fragment) {
 }
 
 
-// Creates options for user to choose from in dropDown
-
-function dropDownMenuOptions (id, name, html) {
-    const element = document.createElement('option')
-    element.value = id
-    element.innerText = name
-    html.appendChild(element)
-}
-
 // Handles the theme colors 
 function themeDarkColor () {
     document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
@@ -83,35 +75,28 @@ elements.dataListItems.appendChild(starting)
 
 // Dropdown with genres user can pick from
 
-const genreHtml = document.createDocumentFragment()
-const firstGenreElement = document.createElement('option')
-firstGenreElement.value = 'any'
-firstGenreElement.innerText = 'All Genres'
-genreHtml.appendChild(firstGenreElement)
+
+// Creating fist option
+elements.searchGenre.addOptionGenre('any', 'All Genres')
 
 // Allows Users to select a genre
 
 for (const [id, name] of Object.entries(genres)) {
-    dropDownMenuOptions (id, name, genreHtml) 
+    elements.searchGenre.addOptionGenre(id, name)
 }
 
-elements.searchGenre.appendChild(genreHtml)
-
 // Dropdown with authors user can pick from
-
-const authorsHtml = document.createDocumentFragment()
-const firstAuthorElement = document.createElement('option')
-firstAuthorElement.value = 'any'
-firstAuthorElement.innerText = 'All Authors'
-authorsHtml.appendChild(firstAuthorElement)
+elements.searchAuthors.addOptionAuthor("any", "All Authors")
 
 // Allows users to pick a author
 
 for (const [id, name] of Object.entries(authors)) {
-   dropDownMenuOptions (id, name, authorsHtml)
+    elements.searchAuthors.addOptionAuthor(id, name)
 }
 
-elements.searchAuthors.appendChild(authorsHtml)
+console.log(elements.searchGenre);
+console.log(elements.searchAuthors);
+
 
 //Toggles theme 
 
@@ -176,26 +161,20 @@ elements.settingsForm.addEventListener('submit', (event) => {
 elements.searchForm.addEventListener('submit', (event) => {
     event.preventDefault()
     const formData = new FormData(event.target)
+    console.log(formData)
     const filters = Object.fromEntries(formData)
     const result = []
 
     for (const book of books) {
-        let genreMatch = filters.genre === 'any'
-
-        for (const singleGenre of book.genres) {
-            if (genreMatch) break;
-            if (singleGenre === filters.genre) { genreMatch = true }
-        }
-
-        if (
-            (filters.title.trim() === '' || book.title.toLowerCase().includes(filters.title.toLowerCase())) && 
-            (filters.author === 'any' || book.author === filters.author) && 
-            genreMatch
-        ) {
-            result.push(book)
+         const titleMatch = filters.title.trim() === '' || book.title.toLowerCase().includes(filters.title.toLowerCase());
+         const authorMatch = filters.author === 'any' || book.author === filters.author;
+         let genreMatch = filters.genre === 'any' || book.genres.includes(filters.genre); {
+            
+            if (titleMatch && authorMatch && genreMatch) 
+                {result.push(book)}
         }
     }
-
+    console.log(filters)
     page = 1;
     matches = result
 
