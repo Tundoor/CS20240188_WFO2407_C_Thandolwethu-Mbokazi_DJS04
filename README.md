@@ -26,14 +26,4 @@ The "Book Connect" project provides an opportunity for students to refine a full
 
 #### Discussion and Reflection
 
-After completing the tasks, prepare a brief presentation for your coaching group on the following:
-- The rationale behind the refactoring decisions made, including the choice of objects and functions.
-- How abstraction has made the code more maintainable and extendable.
-- Any challenges faced during the refactoring process and how they were overcome.
-- Reflections on how this exercise has deepened your understanding of JavaScript programming concepts.
-
-#### Submission Guidelines
-
-Submit the refactored version of the "Book Connect" application, including all HTML, CSS, and JavaScript files. Ensure that your code is well-documented and adheres to the specified Styleguides. Include a written report covering the discussion and reflection points outlined above.
-
-Make sure to submit your project to the LMS on the DJS03 Project Tab.
+I completed all the tasks which were given. Some challenges I ran into was not refactoring enough in certain areas of the code. My commenting needed to be slightly more specific.
